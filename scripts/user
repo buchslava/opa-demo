@@ -1,0 +1,12 @@
+echo "Get Auth token for user:"
+AUTH_DATA=$(curl http://localhost:4001/token?email=foo@bar.com -H "Accept: application/json")
+TOKEN=$(echo "$AUTH_DATA" | gawk '{ match($0, /:"(.+)"/, arr); if(arr[1] != "") print arr[1] }')
+
+# echo "Run OPA server directly:"
+# curl -X POST http://localhost:8181/v1/data/content --data-binary "{ \"input\": { \"token\": \"$TOKEN\" } }" | jq
+
+echo "Check 'read' permission:"
+curl localhost:4001/data?action=read -H "Authorization: Bearer $TOKEN"
+echo
+echo "Check 'write' permission:"
+curl localhost:4001/data?action=write -H "Authorization: Bearer $TOKEN"

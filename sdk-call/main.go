@@ -26,7 +26,7 @@ func main() {
 
 	raw := fmt.Sprintf(`{
     "endpoint": "authorize",
-    "token": "...",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.drt_po6bHhDOF_FJEHTrK-KD8OGjseJZpHwHIgsnoTM",
     "secret": "%s"
   }`, os.Getenv("JWT_SIGNING_SECRET"))
 
@@ -36,8 +36,6 @@ func main() {
 	if err := d.Decode(&input); err != nil {
 		panic(err)
 	}
-
-	fmt.Println(input)
 
 	// var input interface{}
 	// dec := json.NewDecoder(os.Stdin)

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "opa:server": "JWT_SIGNING_SECRET=some+secret ./opa run --server ./policies/*rego",
+    "opa:test": "./test",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

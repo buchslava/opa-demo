@@ -1,0 +1,5 @@
+JWT_SIGNING_SECRET=$(echo "some+secret" | base64)
+
+docker run --rm -it -e JWT_SIGNING_SECRET=$JWT_SIGNING_SECRET -v $(pwd)/policies:/policies openpolicyagent/opa test -v ./policies
+echo "Coverage: "
+docker run --rm -it -e JWT_SIGNING_SECRET=$JWT_SIGNING_SECRET -v $(pwd)/policies:/policies openpolicyagent/opa test -c ./policies | jq '.coverage'

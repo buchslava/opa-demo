@@ -1,4 +1,2 @@
 export JWT_SIGNING_SECRET=mysecret
-# go run main.go example.rego 'data.example.authorize_token' < input.json
-# go run main.go example.rego 'data.example.allow' < input.json
-go run main.go example.rego 'data.example'
+go run main.go policy.rego 'data.example'
